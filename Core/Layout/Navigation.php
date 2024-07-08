@@ -7,7 +7,7 @@
   <nav class="flex flex-row xl:text-2xl font-mono text-xl">
     <ul class="flex w-full gap-8">
       <li><a href="index.php">Todo</a></li>
-      <li><a href="contact.php">Connexion</a></li>
+      <li><a href="../../Views/login.php">Connexion</a></li>
     </ul>
   </nav>
 </div>

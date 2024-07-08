@@ -7,8 +7,8 @@ $login = $_POST['login'] ?? null;
 $password = $_POST['password'] ?? null;
 ?>
 
-<div class="flex flex-row flex-wrap">
-  <div class="md:w-1/2 p-4">
+  <div class="flex flex-col items-center md:w-1/2 p-4">
+    <p class="text-2xl font-bold mb-4">Connexion</p>
     <form action="#" method="post">
       <div class="mb-4">
         <label for="login" class="block text-gray-700 text-sm font-bold mb-2">Pseudo</label>
@@ -24,5 +24,3 @@ $password = $_POST['password'] ?? null;
         </button>
     </form>
   </div>
-<?php echo $login ?>
-</div>
