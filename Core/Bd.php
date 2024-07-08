@@ -26,7 +26,7 @@ class Bd extends PDO
     }
 
 
-    public static function getInstance(): self
+    public static function getInstance()
     {
         if (!self::$instance) {
             self::$instance = new Bd();
@@ -35,7 +35,7 @@ class Bd extends PDO
         return self::$instance;
     }
 
-    public function connectionDb(): self
+    public function connectionDb()
     {
         return $this->conn;
     }

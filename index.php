@@ -8,20 +8,14 @@ use App\Core\Bd;
 
 $connectionDb = Bd::getInstance();
 $conn = $connectionDb->connectionDb();
+
+require_once'./Core/Layout/Header.php';
+
+require_once './Core/Layout/Navigation.php';
 ?>
 
-<!DOCTYPE html>
-<html>
 
-<head>
-  <title>My Website</title>
-</head>
-
-<body>
   <main>
-    <h1>Welcome to my website!</h1>
-    <p>This is some text on my website.</p>
   </main>
-</body>
 
-</html>
+<?php require_once './Core/Layout/Footer.php';
