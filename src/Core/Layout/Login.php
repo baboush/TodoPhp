@@ -2,9 +2,6 @@
 
 namespace App\Core\Layout;
 
-$_SESSION['user'] = null;
-$login = $_POST['login'] ?? null;
-$password = $_POST['password'] ?? null;
 ?>
 
   <div class="flex flex-col items-center md:w-1/2 p-4">
@@ -12,7 +9,7 @@ $password = $_POST['password'] ?? null;
     <form action="#" method="post">
       <div class="mb-4">
         <label for="login" class="block text-gray-700 text-sm font-bold mb-2">Pseudo</label>
-        <input type="text" name="login" id="login " class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <input type="text" name="login" id="login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
       </div>
       <div class="mb-6">
         <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Mot de passe</label>

@@ -2,10 +2,11 @@
 
 namespace App\Core;
 
+require_once __DIR__ . '/../../vendor/autoload.php';
 use PDO;
 use PDOException;
 
-class Bd extends PDO
+class Bd
 {
     private static $instance = null;
     private $conn;
@@ -15,13 +16,14 @@ class Bd extends PDO
         $username = 'root';
         $password = 'root';
         $dbName = 'todo';
-        $host = '127.0.1.0:3333';
+        $host = '127.0.0.1';
+        $port = 3333;
 
         try {
-            $this->conn = new PDO("mysql:host=$host;dbName=$dbName", $username, $password);
+            $this->conn = new PDO("mysql:host=$host;dbname=$dbName;port=$port", $username, $password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Connection failed" . $e->getMessage();
+            die("Connection failed" . $e->getMessage());
         }
     }
 

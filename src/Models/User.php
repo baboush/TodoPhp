@@ -5,12 +5,12 @@ namespace App\Models;
 class User
 {
     protected int $id;
-    protected string $pseudo;
+    protected string $login;
     protected string $password;
 
-    public function __construct(string $pseudo, string $password)
+    public function __construct(string $login, string $password)
     {
-        $this->pseudo = $pseudo;
+        $this->login = $login;
         $this->password = $password;
     }
 
@@ -19,9 +19,9 @@ class User
         return $this->id;
     }
 
-    public function getPseudo()
+    public function getLogin()
     {
-        return $this->pseudo;
+        return $this->login;
     }
 
 
@@ -30,9 +30,9 @@ class User
         return $this->password;
     }
 
-    public function setPseudo(string $pseudo)
+    public function setLogin(string $login)
     {
-        $this->pseudo = $pseudo;
+        $this->login = $login;
         return $this;
     }
 
