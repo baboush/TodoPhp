@@ -20,9 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $controller = new UserController();
         $user_exist = $controller->findOneUser($login);
 
-        if ($user_exist->getLogin() == $login) {
+        if (!empty($user_exist) && $user_exist->getLogin() == $login) {
             die('User already exist');
         }
         $controller->createUser($user);
+        header('Location: ../../../index.php');
+        exit();
     }
 }
