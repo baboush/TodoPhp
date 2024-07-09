@@ -28,7 +28,7 @@ class UserController
         }
     }
 
-    public function findOneUser(?string $user): User
+    public function findOneUser(?string $user): ?User
     {
         $sql = "SELECT * FROM user WHERE login = :login";
         $bd = Bd::getInstance();
@@ -40,7 +40,23 @@ class UserController
         try {
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
             return new User($user['login'], $user['passwd']);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function deleteUser(?string $user)
+    {
+        $sql = "DELETE FROM user WHERE login = :login";
+        $bd = Bd::getInstance();
+        $conn = $bd->connectionDb();
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':login', $user);
+        try {
+            $stmt->execute();
+            return true;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

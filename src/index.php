@@ -21,6 +21,7 @@ if (!isset($_SESSION['user'])) {
     include_once './Core/Layout/Subscription.php';
 } else {
     echo 'Welcome ' . $_SESSION['user'];
+    include_once './Core/Layout/DeleteAccount.php';
 }
 ?>
 </main>
