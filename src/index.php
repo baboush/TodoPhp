@@ -14,9 +14,15 @@ require_once './Core/Layout/Navigation.php';
 ?>
 
 
-  <main class="h-full">
-  <?php require_once './Core/Layout/Login.php'; ?>
-  <?php require_once './Core/Layout/Subscription.php'; ?>
-  </main>
+<main class="h-full">
+<?php
+if (!isset($_SESSION['user'])) {
+    include_once './Core/Layout/Login.php';
+    include_once './Core/Layout/Subscription.php';
+} else {
+    echo 'Welcome ' . $_SESSION['user'];
+}
+?>
+</main>
 
 <?php require_once './Core/Layout/Footer.php';

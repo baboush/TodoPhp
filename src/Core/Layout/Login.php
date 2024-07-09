@@ -6,7 +6,7 @@ namespace App\Core\Layout;
 
   <div class="flex flex-col items-center md:w-1/2 p-4">
     <p class="text-2xl font-bold mb-4">Connexion</p>
-    <form action="#" method="post">
+    <form action="../../Core/Usecase/User/Login-usecase.php" method="post">
       <div class="mb-4">
         <label for="login" class="block text-gray-700 text-sm font-bold mb-2">Pseudo</label>
         <input type="text" name="login" id="login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
