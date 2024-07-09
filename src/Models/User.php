@@ -8,10 +8,11 @@ class User
     protected string $login;
     protected string $password;
 
-    public function __construct(string $login, string $password)
+    public function __construct(?int $id = null, ?string $login = '', ?string $password = '')
     {
         $this->login = $login;
         $this->password = $password;
+        $this->id = $id;
     }
 
     public function getId()

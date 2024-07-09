@@ -16,12 +16,13 @@ require_once './Core/Layout/Navigation.php';
 
 <main class="h-full">
 <?php
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['userId'])) {
     include_once './Core/Layout/Login.php';
     include_once './Core/Layout/Subscription.php';
 } else {
-    echo 'Welcome ' . $_SESSION['user'];
+    echo 'Welcome ' . $_SESSION['userId'];
     include_once './Core/Layout/DeleteAccount.php';
+    include_once './Core/Layout/UpdateUser.php';
 }
 ?>
 </main>

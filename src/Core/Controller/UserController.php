@@ -28,6 +28,22 @@ class UserController
         }
     }
 
+    public function userExists(?string $login)
+    {
+        $sql = "SELECT * FROM user WHERE login = :login";
+        $bd = Bd::getInstance();
+        $conn = $bd->connectionDb();
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':login', $login);
+
+        $stmt->execute();
+        $user = $stmt->fetch();
+
+        return $user !== false;
+    }
+
+
     public function findOneUser(?int $id): ?User
     {
         $sql = "SELECT * FROM user WHERE id = :id";

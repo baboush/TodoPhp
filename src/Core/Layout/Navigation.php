@@ -7,7 +7,7 @@
   <nav class="flex flex-row xl:text-2xl font-mono text-xl">
     <ul class="flex w-full gap-8">
       <li><a href="index.php">Todo</a></li>
-      <?php if (!isset($_SESSION['user'])) {
+      <?php if (!isset($_SESSION['userId'])) {
           echo('<li><a href="../../Views/login.php">Connexion</a></li>');
       } else {
           echo('<li><a href="../Core/Usecase/User/Logout-usecase.php">Dèconnexion</a></li>');
