@@ -69,16 +69,15 @@ class UserController
         }
     }
 
-    public function deleteUser(?string $user)
+    public function deleteUser(?int $id)
     {
-        $sql = "DELETE FROM user WHERE login = :login";
+        $sql = "DELETE FROM user WHERE id = :id";
         $bd = Bd::getInstance();
         $conn = $bd->connectionDb();
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':login', $user);
+        $stmt->bindParam(':id', $id);
         try {
             $stmt->execute();
-            return true;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
