@@ -6,12 +6,13 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use App\Core\Bd;
 use App\Models\User;
+use Exception;
 use PDO;
 use PDOException;
 
 class UserController
 {
-    public function createUser(?User $user)
+    public function createUser(?User $user): ?User
     {
         $sql = "INSERT INTO user (login, passwd) VALUES (:login, :password)";
         $bd = Bd::getInstance();
@@ -23,8 +24,10 @@ class UserController
 
         try {
             $stmt->execute();
+            $user->getId($conn->lastInsertId());
+            return $user;
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -56,7 +59,7 @@ class UserController
         try {
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($user === false) {
+            if (empty($user)) {
                 return null;
             }
             return new User($user['id'], $user['login'], $user['passwd']);
@@ -129,7 +132,7 @@ class UserController
         }
     }
 
-    public function login(?string $login)
+    public function login(?string $login): ?User
     {
 
         $sql = "SELECT * FROM user WHERE login = :login";
@@ -141,7 +144,7 @@ class UserController
         try {
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($user === false) {
+            if (empty($user)) {
                 return null;
             }
             return new User($user['id'], $user['login'], $user['passwd']);
