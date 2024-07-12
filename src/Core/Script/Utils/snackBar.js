@@ -2,6 +2,7 @@ const snackbar = document.querySelector("#snackbar");
 
 export const successSnackbar = (message) => {
   openSnackbar();
+  snackbar.textContent = "";
   snackbar.textContent += `${message}`;
   snackbar.classList.add("bg-green-700", "visible", "z-50");
   closeSnackbar();
@@ -9,11 +10,12 @@ export const successSnackbar = (message) => {
 
 export const errorSnackbar = (message) => {
   openSnackbar();
+  snackbar.textContent = "";
   snackbar.textContent += `${message}`;
   snackbar.classList.add("bg-red-700", "visible", "z-50");
   setTimeout(() => {
     closeSnackbar();
-    window.location.reload();
+    //    window.location.reload();
   }, 3000);
 };
 

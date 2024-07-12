@@ -94,8 +94,6 @@ class UserController
         if ($user->getLogin() !== null && strlen($user->getLogin()) > 4 && $user->getLogin() !== '') {
             $sql .= "login = :login, ";
             $params[':login'] = $user->getLogin();
-        } else {
-            echo "Login must be at least 4 characters long";
         }
 
         if ($user->getPassword() !== null && $user->getPassword() != '') {
@@ -103,8 +101,6 @@ class UserController
                 $hashedPassword = password_hash($user->getPassword(), PASSWORD_DEFAULT);
                 $sql .= "passwd = :password, ";
                 $params[':password'] = $hashedPassword;
-            } else {
-                die('error: password must be at least 10 characters long');
             }
         }
 
@@ -122,12 +118,12 @@ class UserController
         try {
             $stmt->execute();
             if ($user->getLogin() !== null) {
-                $_SESSION['user'] = $user->getLogin();
+                $_SESSION['userId'] = $user->getId();
             }
-
             return $user;
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo json_encode(["success" => false, "message" => $e->getMessage()]);
+            return null;
         }
     }
 
