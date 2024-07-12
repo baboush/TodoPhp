@@ -65,7 +65,7 @@ class UserController
             return new User($user['id'], $user['login'], $user['passwd']);
 
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -79,7 +79,7 @@ class UserController
         try {
             $stmt->execute();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -122,8 +122,7 @@ class UserController
             }
             return $user;
         } catch (PDOException $e) {
-            echo json_encode(["success" => false, "message" => $e->getMessage()]);
-            return null;
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -144,7 +143,7 @@ class UserController
             }
             return new User($user['id'], $user['login'], $user['passwd']);
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage;
+            throw new Exception($e->getMessage());
         }
     }
 }

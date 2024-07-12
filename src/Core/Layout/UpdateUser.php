@@ -86,7 +86,7 @@ $id = $user->getId();
         value="<?php echo $id;?>"
       >
       <button type="submit" 
-        id="delete-user"
+        id="update-user"
         class="w-2/4 m-auto bg-white
         shadow-2xl rounded-md "
       >
