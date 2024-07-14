@@ -14,8 +14,8 @@ $id = $user->getId();
 ?>
 
 <button id="toggle-update-user"
-  class="bg-blue-500 hover:bg-blue-700
-  text-white font-bold p-4
+  class="bg-yellow-700 hover:bg-yellow-500
+  text-white font-bold p-4 w-full
   rounded focus:shadow-outline"
 >
   Mettre à jour son profil

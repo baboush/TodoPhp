@@ -43,7 +43,7 @@ const showForm = () => {
       { opacity: 0, zoom: 0 },
       { opacity: 1, zoom: 1, zIndex: 10 },
     ],
-    duration: 400,
+    duration: 200,
     easing: "easeInOutQuad",
   });
 };
@@ -56,7 +56,7 @@ const closeForm = () => {
       { opacity: 1, zoom: 1 },
       { opacity: 0, zoom: 0, zIndex: -10 },
     ],
-    duration: 400,
+    duration: 200,
     easing: "easeInOutQuad",
   });
   setTimeout(() => {

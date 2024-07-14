@@ -5,7 +5,7 @@ namespace App\Core\Layout;
 $sessionUser = $_SESSION['userId'];
 ?>
 
-<button id="toggle-delete-user" class="bg-red-600 text-white rounded-sm p-4">Supprimer compte</button>
+<button id="toggle-delete-user" class="w-full bg-red-600 text-white rounded-sm p-4">Supprimer compte</button>
 <div class="flex flex-row bg-white p-4 invisible min-w-96 max-w-screen-sm top-[20vh] h-screen md:translate-x-[-50%] md:left-[50%] md:min-h-48 md:max-h-72 w-screen flex-wrap items-center justify-center p-4 shadow-md absolute" id="form-delete-user">
   <p class="md:text-2xl p-4 font-bold">Confirmer la suppression</p>
   <div class="flex flex-row gap-10 flex-nowrap items-center  w-full justify-between">

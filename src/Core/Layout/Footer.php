@@ -2,5 +2,6 @@
       <p class="text-center w-full">© 2024 - Tous droits</p>
       <a class="text-center w-full">Mentions lègales</a>
     </footer>
+
   </body>
 </html>
