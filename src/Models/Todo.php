@@ -6,14 +6,24 @@ use DateTime;
 
 class Todo
 {
-    protected int $id;
+    protected ?int $id;
     protected string $title;
-    protected string $description;
-    protected DateTime $dateFinish;
+    protected string $message;
+    protected ?DateTime $dateFinish;
     protected int $state;
+    protected DateTime $createAt;
+    protected int $userId;
 
-    public function __construct()
+
+    public function __construct(?int $id = null, ?int $userId = 0, ?string $title = '', ?string $message = '', ?DateTime $dateFinish = null, ?DateTime $createAt = null, ?int $state = 0)
     {
+        $this->title = $title;
+        $this->message = $message;
+        $this->dateFinish = $dateFinish;
+        $this->createAt = $createAt ?? new DateTime();
+        $this->state = $state;
+        $this->userId = $userId;
+        $this->id = $id;
     }
 
     public function getId()
@@ -26,9 +36,9 @@ class Todo
         return $this->title;
     }
 
-    public function getDescription()
+    public function getMessage()
     {
-        return $this->description;
+        return $this->message;
     }
 
     public function getDateFinish()
@@ -36,14 +46,24 @@ class Todo
         return $this->dateFinish;
     }
 
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function getCreateAt()
+    {
+        return $this->createAt;
+    }
+
     public function getState()
     {
         return $this->state;
     }
 
-    public function setId(int $id)
+    public function setUserId(int $userId)
     {
-        $this->id = $id;
+        $this->userId = $userId;
         return $this;
     }
 
@@ -53,13 +73,13 @@ class Todo
         return $this;
     }
 
-    public function setDescription(string $description)
+    public function setMessage(string $message)
     {
-        $this->description = $description;
+        $this->message = $message;
         return $this;
     }
 
-    public function setDateFinish($date)
+    public function setDateFinish(?DateTime $date)
     {
         $this->dateFinish = $date;
         return $this;
@@ -68,6 +88,12 @@ class Todo
     public function setState($state)
     {
         $this->state = $state;
+        return $this;
+    }
+
+    public function setCreateAt()
+    {
+        $this->createAt = new DateTime();
         return $this;
     }
 }
