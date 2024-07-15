@@ -5,13 +5,13 @@ import {
 } from "../Utils/snackBar.js";
 import { isNotValid, isValid } from "../Utils/checkInput.js";
 import Todo from "../../../Core/Script/Utils/Models/todo-model.js";
-import * as buildItemTodo from "../../../Core/Script/TodoScript/findAllTodos.js";
+import * as buildItemTodo from "../../../Core/Script/TodoScript/buildTodoList.js";
 import { animationNewTodoStyle } from "../../../Core/Script/Utils/Styles/todoListStyle.js";
-const todo = new Todo();
 
 const handleSubmit = async (event) => {
   event.preventDefault();
 
+  const todo = new Todo();
   const formData = new FormData(event.target);
 
   const newTodo = await todo.createTodo(formData);
@@ -21,6 +21,7 @@ const handleSubmit = async (event) => {
     successSnackbar(newTodo.message);
     closeForm();
     addTodo(newTodo.data);
+    return true;
   } else {
     errorSnackbar(newTodo.message);
     closeForm();
@@ -38,12 +39,14 @@ const itemTodoAdd = (todo) => {
 
   const item = buildItemTodo.itemTodo(createTodo);
   animationNewTodoStyle(item);
+
   return item;
 };
 
 const addTodo = (todo) => {
   const el = document.querySelector("#list-todo");
   const newTodo = itemTodoAdd(todo);
+  el.removeChild(el.lastChild);
   el.prepend(newTodo);
   return el;
 };

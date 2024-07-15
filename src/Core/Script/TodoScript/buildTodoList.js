@@ -10,11 +10,11 @@ export const bulidTodoList = (todos) => {
   todoList.innerHTML = "";
   todos.forEach((todo) => {
     const li = itemTodo(todo);
-    styles.animationEntranceTodoListStyle();
     if (todo.state) {
       li.classList.toggle("bg-green-100");
     }
     todoList.appendChild(li);
+    styles.animationEntranceTodoListStyle();
   });
 };
 
@@ -23,6 +23,7 @@ export const itemTodo = (todo) => {
   el.id = `item-${todo.id}`;
   styles.itemTodoStyle(el);
   el.appendChild(fieldTodo(todo));
+
   return el;
 };
 
@@ -197,5 +198,3 @@ const toggleShowOptions = (idItem) => {
     animeButtonInfoOption(el);
   }
 };
-
-bulidTodoList(todoList);
