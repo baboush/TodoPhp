@@ -174,12 +174,13 @@ const btnRemoveTodo = (idItem) => {
   el.textContent = "Supprimer";
   styles.btnRemoveOptionsStyle(el);
   el.addEventListener("click", () => {
-    const popup = document.querySelector("#form-delete-todo");
-    const id = document.querySelector("#delete-todo");
+    const popup = document.querySelector("#container-delete-todo");
+    const id = document.querySelector("#todo-id");
     id.value = idItem;
+    console.info("id", id);
     todo.deleteTodo();
     todo.cancelDeleteTodo();
-    popup.classList.toggle("hidden");
+    popup.classList.toggle("invisible");
   });
   return el;
 };

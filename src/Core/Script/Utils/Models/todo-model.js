@@ -24,7 +24,7 @@ export default class Todo {
     );
   };
 
-  findOneTodo = async (id) => {
+  findOneTodo = async () => {
     const response = await fetch(
       `../../../Core/Usecase/Todo/Find-One-Todo.php`,
     );
@@ -40,6 +40,14 @@ export default class Todo {
         body: data,
       },
     );
-    return response.json();
+    return await response.json();
+  };
+
+  deleteTodoById = async (data) => {
+    const response = await fetch("../../../Core/Usecase/Todo/Delete-Todo.php", {
+      method: "POST",
+      body: data,
+    });
+    return await response.json();
   };
 }

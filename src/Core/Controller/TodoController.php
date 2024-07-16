@@ -98,4 +98,19 @@ class TodoController
             throw new Exception($e->getMessage());
         }
     }
+
+    public function removeTodoById(int $id)
+    {
+        $bd = Bd::getInstance();
+        $conn = $bd->connectionDb();
+        $sql = "DELETE FROM todo WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+
+        try {
+            $stmt->execute(['id' => $id]);
+            return json_encode(["success" => true, "message" => "Todo supprimé"]);
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
 }
