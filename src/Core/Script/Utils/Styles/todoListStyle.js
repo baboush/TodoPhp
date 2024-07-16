@@ -1,7 +1,9 @@
 export const itemTodoStyle = (el) => {
+  console.info("itemTodoStyle", el);
   el.classList.add(
     "flex",
     "flex-col",
+    "-tranlate-x-100",
     "p-4",
     "w-full",
     "border",
@@ -151,7 +153,7 @@ export const animationEntranceTodoListStyle = () => {
       { translateX: -100, opacity: 0 },
       { translateX: 0, opacity: 1 },
     ],
-    delay: anime.stagger(100, { start: 300 }),
+    delay: anime.stagger(50, { start: 150 }),
   });
 };
 

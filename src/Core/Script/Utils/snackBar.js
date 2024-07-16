@@ -4,7 +4,7 @@ export const successSnackbar = (message) => {
   openSnackbar();
   snackbar.textContent = "";
   snackbar.textContent += `${message}`;
-  snackbar.classList.add("bg-green-700", "visible", "z-50");
+  snackbar.classList.add("bg-green-700", "visible", "z-50", "fixed", "top-5");
   closeSnackbar();
 };
 
@@ -12,11 +12,10 @@ export const errorSnackbar = (message) => {
   openSnackbar();
   snackbar.textContent = "";
   snackbar.textContent += `${message}`;
-  snackbar.classList.add("bg-red-700", "visible", "z-50");
+  snackbar.classList.add("bg-red-700", "visible", "z-50", "fixed", "top-5");
   setTimeout(() => {
     closeSnackbar();
-    //    window.location.reload();
-  }, 3000);
+  }, 2000);
 };
 
 const closeSnackbar = () => {
@@ -31,7 +30,7 @@ const closeSnackbar = () => {
       easing: "easeInOutQuad",
       fill: "forwards",
     });
-  }, 3500);
+  }, 2000);
 };
 
 export const openSnackbar = () => {
