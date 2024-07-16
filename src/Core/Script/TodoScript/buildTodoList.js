@@ -1,9 +1,6 @@
-import Todo from "../../../Core/Script/Utils/Models/todo-model.js";
-import * as styles from "../../../Core/Script/Utils/Styles/todoListStyle.js";
-import { successSnackbar } from "../../../Core/Script/Utils/snackBar.js";
-
-const todo = new Todo();
-const todoList = await todo.findAllTodos();
+import * as styles from "../Utils/Styles/todoListStyle.js";
+import { successSnackbar } from "../Utils/snackBar.js";
+import * as todo from "./deleteTodo.js";
 
 export const bulidTodoList = (todos) => {
   const todoList = document.querySelector("#list-todo");
@@ -173,10 +170,16 @@ const optionsTodo = (idItem) => {
 const btnRemoveTodo = (idItem) => {
   const el = document.createElement("button");
   el.id = `${idItem}-remove`;
+  el.type = "submit";
   el.textContent = "Supprimer";
   styles.btnRemoveOptionsStyle(el);
   el.addEventListener("click", () => {
-    console.log("removeTodoById", idItem);
+    const popup = document.querySelector("#form-delete-todo");
+    const id = document.querySelector("#delete-todo");
+    id.value = idItem;
+    todo.deleteTodo();
+    todo.cancelDeleteTodo();
+    popup.classList.toggle("hidden");
   });
   return el;
 };

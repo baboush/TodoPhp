@@ -5,29 +5,34 @@ namespace App\Core\Layout;
 ?>
 
 <div class="block p-4">
+<?php require_once './Core/Layout/DeleteTodo.php' ?>
   <h2>Todo List</h2>
   <div class="flex flex-row gap-5 m-4" id="list-todo-action">
     <button id="toggle-five-todo"
       class="bg-blue-400 hover:bg-blue-700
       text-white font-bold p-4 w-full
+      opacity-0 -translate-Y-40
       rounded focus:shadow-outline">
       Default
     </button>
     <button id="toggle-all-todo"
       class="bg-blue-400 hover:bg-blue-700
       text-white font-bold p-4 w-full
+      opacity-0 translate-Y-40
       rounded focus:shadow-outline">
       List
     </button>
     <button id="toggle-pending-todo"
       class="bg-blue-400 hover:bg-blue-700
       text-white font-bold p-4 w-full
+      opacity-0 -translate-Y-40
       rounded focus:shadow-outline">
       En cours
     </button>
     <button id="toggle-done-todo"
       class="bg-blue-400 hover:bg-blue-700
       text-white font-bold p-4 w-full
+      opacity-0 translate-Y-40
       rounded focus:shadow-outline">
       Fini</button>
   </div>
