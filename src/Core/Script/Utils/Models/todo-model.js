@@ -43,6 +43,14 @@ export default class Todo {
     return await response.json();
   };
 
+  updateTodo = async (data) => {
+    const response = await fetch("../../../Core/Usecase/Todo/Update-Todo.php", {
+      method: "POST",
+      body: data,
+    });
+    return await response.json();
+  };
+
   deleteTodoById = async (data) => {
     const response = await fetch("../../../Core/Usecase/Todo/Delete-Todo.php", {
       method: "POST",

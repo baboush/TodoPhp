@@ -60,7 +60,6 @@ const closeForm = () => {
 };
 
 document.querySelector("#input-update-login").addEventListener("input", (e) => {
-  console.info(e.target.value);
   if (e.target.value.length < 3 || e.target.value.length > 40)
     isNotValid(e.target, document.querySelector("#hint-update-login"));
   else isValid(e.target, document.querySelector("#hint-update-login"));
@@ -69,7 +68,6 @@ document.querySelector("#input-update-login").addEventListener("input", (e) => {
 document
   .querySelector("#input-update-password")
   .addEventListener("input", (e) => {
-    console.info(e.target.value);
     if (e.target.value.length < 3 || e.target.value.length > 40)
       isNotValid(e.target, document.querySelector("#hint-update-password"));
     else isValid(e.target, document.querySelector("#hint-update-password"));

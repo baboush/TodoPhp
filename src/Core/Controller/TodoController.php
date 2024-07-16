@@ -113,4 +113,33 @@ class TodoController
             throw new Exception($e->getMessage());
         }
     }
+
+    public function updateTodo(?Todo $todo, int $id): ?Todo
+    {
+        $bd = Bd::getInstance();
+        $conn = $bd->connectionDb();
+        $sql = "UPDATE todo SET ";
+        $params = array();
+        $sql .= "title = :title, ";
+        $params[':title'] = $todo->getTitle();
+        $sql .= "message = :message, ";
+        $params[':message'] = $todo->getMessage();
+        $sql .= "dateFinish = :dateFinish, ";
+        $params[':dateFinish'] =  $todo->getDateFinish();
+
+        $sql = rtrim($sql, ', ');
+        $sql .= " WHERE id = :id";
+        $params[':id'] = $id;
+
+        $stmt = $conn->prepare($sql);
+        foreach ($params as $key => &$val) {
+            $stmt->bindValue($key, $val);
+        }
+        try {
+            $stmt->execute();
+            return $todo;
+        } catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
 }
