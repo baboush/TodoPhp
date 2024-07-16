@@ -43,11 +43,18 @@ const itemTodoAdd = (todo) => {
   return item;
 };
 
-const addTodo = (todo) => {
+const addTodo = async (todo) => {
+  const todo = new Todo();
+  const todoList = await todo.findAllTodos();
+
   const el = document.querySelector("#list-todo");
   const newTodo = itemTodoAdd(todo);
-  el.removeChild(el.lastChild);
-  el.prepend(newTodo);
+  if (todoList.length > 5) {
+    el.removeChild(el.lastChild);
+    el.prepend(newTodo);
+  } else {
+    el.prepend(newTodo);
+  }
   return el;
 };
 

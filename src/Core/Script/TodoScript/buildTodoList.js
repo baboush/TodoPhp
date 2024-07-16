@@ -1,6 +1,7 @@
 import * as styles from "../Utils/Styles/todoListStyle.js";
 import { successSnackbar } from "../Utils/snackBar.js";
 import * as todo from "./deleteTodo.js";
+import * as todoUpdate from "./updateTodo.js";
 
 export const bulidTodoList = (todos) => {
   const todoList = document.querySelector("#list-todo");
@@ -191,7 +192,9 @@ const btnUpdateTodo = (idItem) => {
   el.id = `${idItem}-update`;
   styles.btnEditOptionsStyle(el);
   el.addEventListener("click", () => {
-    console.log("updateTodoById", idItem);
+    todoUpdate.showUpdateTodoModal(idItem);
+    todoUpdate.updateTodo();
+    todoUpdate.closeUpdateTodoModal();
   });
   return el;
 };

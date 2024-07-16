@@ -3,7 +3,7 @@ import {
   successSnackbar,
   errorSnackbar,
 } from "../../../Core/Script/Utils/snackBar.js";
-import * as todoList from "../../../Core/Script/TodoScript/buildTodoList.js";
+import { bulidTodoList } from "../../../Core/Script/TodoScript/buildTodoList.js";
 
 export const handledeleteTodo = async (e) => {
   const todo = new Todo();
@@ -12,10 +12,12 @@ export const handledeleteTodo = async (e) => {
   const popup = document.querySelector("#container-delete-todo");
   e.preventDefault();
   const isDeleted = await todo.deleteTodoById(formData);
+
+  const todoList = await todo.findAllTodos();
   if (!!isDeleted.success) {
     successSnackbar(isDeleted.message);
     popup.classList.toggle("invisible", "z-50");
-    window.location.reload();
+    bulidTodoList(todoList);
   } else {
     errorSnackbar(isDeleted.message);
     popup.classList.toggle("invisible", "z-50");
