@@ -7,32 +7,23 @@ import { isNotValid, isValid } from "../Utils/checkInput.js";
 
 const container = document.querySelector("#container-subscription");
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault();
-
   const formData = new FormData(event.target);
+  const response = await fetch(
+    "../../../Core/Usecase/User/Create-user-usecase.php",
+    { method: "POST", body: formData },
+  );
+  const data = await response.json();
 
-  fetch("../../../Core/Usecase/User/Create-user-usecase.php", {
-    method: "POST",
-    body: formData,
-  }).then((response) => {
-    response
-      .json()
-      .then((data) => {
-        openSnackbar();
-        if (data.success) {
-          const message = `User ${data.message} 'a bien ètè crèè !`;
-          successSnackbar(message);
-          hiddenForm();
-          displayLoginForm();
-        } else {
-          errorSnackbar(data.message);
-        }
-      })
-      .catch((error) => {
-        errorSnackbar(error.message);
-      });
-  });
+  if (!!data.success) {
+    const message = `User ${data.message} 'a bien ètè crèè !`;
+    successSnackbar(message);
+    hiddenForm();
+    displayLoginForm();
+  } else {
+    errorSnackbar(data.message);
+  }
 };
 
 document

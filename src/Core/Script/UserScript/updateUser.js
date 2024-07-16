@@ -5,33 +5,28 @@ import {
 } from "../Utils/snackBar.js";
 import { isNotValid, isValid } from "../Utils/checkInput.js";
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault();
 
   const formData = new FormData(event.target);
 
-  fetch("../../../Core/Usecase/User/Update-usecase.php", {
-    method: "POST",
-    body: formData,
-  }).then((response) => {
-    response
-      .json()
-      .then((data) => {
-        openSnackbar();
-        if (data.success) {
-          const message = `Mise à jour rèussie !`;
-          successSnackbar(message);
-          closeForm();
-        } else {
-          errorSnackbar(data.message);
-          closeForm();
-        }
-      })
-      .catch((error) => {
-        errorSnackbar(error.message);
-        closeForm();
-      });
-  });
+  const response = await fetch(
+    "../../../Core/Usecase/User/Update-usecase.php",
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
+  const data = response.json();
+  openSnackbar();
+  if (data.success) {
+    const message = `Mise à jour rèussie !`;
+    successSnackbar(message);
+    closeForm();
+  } else {
+    errorSnackbar(data.message);
+    closeForm();
+  }
 };
 
 const showForm = () => {
