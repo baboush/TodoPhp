@@ -4,7 +4,7 @@ namespace App\Models;
 
 class User
 {
-    protected int $id;
+    protected ?int $id;
     protected string $login;
     protected string $password;
 

@@ -13,13 +13,13 @@ require_once'./Core/Layout/Header.php';
 require_once './Core/Layout/Navigation.php';
 ?>
 
-<main id="main-content" class="opacity-0 -translateX-40 h-full flex flex-row w-full flex-wrap items-center justify-between">
+<main id="main-content" class="opacity-0 -translateX-40 md:min-h-[80vh] flex flex-row w-full flex-wrap items-center justify-between">
   <?php require_once './Core/Layout/Snackbar.php';?>
   <div class="flex flex-row flex-wrap w-full h-full">
     <?php if(!isset($_SESSION['userId'])): ?>
     <div id="main-login" class="w-full flex flex-row">
       <?php
-      include_once './Core/Layout/Login.php';
+        include_once './Core/Layout/Login.php';
         include_once './Core/Layout/Subscription.php';
         ?>
     </div>
@@ -31,12 +31,11 @@ require_once './Core/Layout/Navigation.php';
         ?>
       </div>
       <div class="w-full flex flex-col gap-4 p-8 md:w-7/12">
-        <?php
-        include_once './Core/Layout/ListTodo.php';
-        ?>
+        <?php include_once './Core/Layout/CreateTodo.php';?>
+        <?php include_once './Core/Layout/UpdateUser.php';?>
+        <?php include_once './Core/Layout/DeleteAccount.php';?>
+        <?php include_once './Core/Layout/ListTodo.php';?>
       </div>
       <?php endif; ?>
   </div>
 </main>
-
-<?php require_once './Core/Layout/Footer.php';
