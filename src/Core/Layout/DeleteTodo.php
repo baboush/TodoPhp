@@ -11,7 +11,7 @@ namespace App\Core\Layout;
   md:left-[50%] md:min-h-48 md:max-h-72
   w-screen flex-wrap items-center
   justify-center p-4 z-50
-  shadow-md absolute"
+  shadow-md absolute left-0"
   id="container-delete-todo"
 >
   <p class="md:text-2xl p-4 font-bold">

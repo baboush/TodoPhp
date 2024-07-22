@@ -13,7 +13,7 @@ namespace App\Core\Layout;
   md:top-1/2 md:-translate-y-1/2
   w-screen flex-wrap items-center
   justify-center p-4 z-50
-  shadow-md absolute"
+  shadow-md absolute left-0"
 >
   <div class="relative w-full h-full">
     <form class="w-full h-full md:text-2xl p-12 flex 

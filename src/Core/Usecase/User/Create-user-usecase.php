@@ -13,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $login = filter_var($_POST['login'], FILTER_SANITIZE_STRING);
         $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-        $id = intval($_POST['id']);
 
 
         if (empty($login) || empty($password)) {
@@ -42,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $user = new User($id, $login, $password);
+        $user = new User();
+        $user->setLogin($login)
+             ->setPassword($password);
 
 
         $controller = new UserController();

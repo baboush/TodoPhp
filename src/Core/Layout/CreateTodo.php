@@ -8,23 +8,18 @@ if (isset($_SESSION['userId'])) {
 
 ?>
 
-<button id="toggle-create-todo"
-  class="bg-green-700 hover:bg-green-500
-  text-white font-bold p-4 w-full
-  rounded focus:shadow-outline"
->
-  Ajoutè un Todo
-</button>
 <div id="container-create-todo"
   class="flex flex-row shadow-2xl
-  items-center w-full md:w-1/2 p-2 absolute
-  md:left-1/2 md:-translate-x-1/2
-  md:min-h-96 md:max-h-[70vh] md:top-[18vh] bg-white
-  h-screen invisible opacity-0"
+  items-center w-full p-2 fixed
+  absolute top-0 left-0 bg-white
+  md:left-[50%] md:top-[50%]
+  md:transform md:translate-x-[-50%] md:translate-y-[-50%]
+  md:w-1/2
+  invisible"
 >
   <div class="relative w-full h-full">
     <form class="w-full h-full md:text-2xl p-12 flex 
-      flex-col bg-white items-center"
+      flex-col bg-white items-center z-index-50 bg-white"
       id="form-create-todo"
       action="../../Core/Usecase/Todo/Create-todo.php"
       method="post"
@@ -44,7 +39,7 @@ if (isset($_SESSION['userId'])) {
           focus:shadow-outline"
         >
         <span id="hint-todo-title"
-          class="inline-flex text-red-500 
+          class="inline-flex text-red-500
           md:text-xs italic invisible"
         >
           Le titre doit contenir entre 10 et 40 caaractères
@@ -75,8 +70,8 @@ if (isset($_SESSION['userId'])) {
       </div>
       <div class="w-full">
         <label for="date"
-        class="block text-gray-700
-        md:text-xl font-bold mb-2">Date</label>
+          class="block text-gray-700
+          md:text-xl font-bold mb-2">Date</label>
         <input type="date"
           name="dateFinish"
           id="input-date"

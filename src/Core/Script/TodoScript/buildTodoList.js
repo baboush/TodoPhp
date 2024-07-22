@@ -49,7 +49,7 @@ export const headerTodo = (todo) => {
 export const titleTodo = (title) => {
   const el = document.createElement("p");
   el.textContent = title;
-  el.classList.add("text-lg", "font-semibold", "w-2/3");
+  el.classList.add("text-lg", "font-semibold", "break-all", "w-2/3");
   return el;
 };
 
@@ -101,7 +101,6 @@ const submitStateTodo = (el, todo) => {
   el.addEventListener("submit", async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const id = formData.get("id");
     const state = formData.get("state") ? 1 : 0;
     formData.set("state", !state);
     const isChecked = await todo.updateStateTodo(formData);

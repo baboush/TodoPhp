@@ -17,7 +17,7 @@ const handleSubmit = async (event) => {
       body: formData,
     },
   );
-  const data = response.json();
+  const data = await response.json();
   openSnackbar();
   if (data.success) {
     const message = `Mise à jour rèussie !`;
@@ -31,32 +31,16 @@ const handleSubmit = async (event) => {
 
 const showForm = () => {
   const form = document.querySelector("#container-update");
-  form.classList.toggle("invisible");
-  anime({
-    targets: form,
-    keyframes: [
-      { opacity: 0, zoom: 0 },
-      { opacity: 1, zoom: 1, zIndex: 10 },
-    ],
-    duration: 200,
-    easing: "easeInOutQuad",
-  });
+  form.classList.toggle("hidden");
+  form.classList.toggle("opacity-0");
+  form.classList.toggle("z-50");
 };
 
 const closeForm = () => {
   const form = document.querySelector("#container-update");
-  anime({
-    targets: form,
-    keyframes: [
-      { opacity: 1, zoom: 1 },
-      { opacity: 0, zoom: 0, zIndex: -10 },
-    ],
-    duration: 200,
-    easing: "easeInOutQuad",
-  });
-  setTimeout(() => {
-    form.classList.toggle("invisible");
-  }, 400);
+  form.classList.toggle("hidden");
+  form.classList.toggle("opacity-0");
+  form.classList.toggle("z-50");
 };
 
 document.querySelector("#input-update-login").addEventListener("input", (e) => {

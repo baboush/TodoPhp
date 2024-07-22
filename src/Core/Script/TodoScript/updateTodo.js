@@ -10,7 +10,6 @@ export const showUpdateTodoModal = (idTodo) => {
   const el = document.querySelector("#container-update-todo");
   const input = document.querySelector("#id-todo-update");
   input.value = idTodo;
-  console.log(input.value);
   el.classList.toggle("invisible");
 };
 
@@ -31,7 +30,6 @@ export const handleUpdateTodo = async (e) => {
   const todo = new Todo();
   const response = await todo.updateTodo(data);
   const el = document.querySelector("#container-update-todo");
-  console.log(response);
   openSnackbar();
   const todoList = await todo.findAllTodos();
   if (!!response.success) {

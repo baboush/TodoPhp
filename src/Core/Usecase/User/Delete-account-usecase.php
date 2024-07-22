@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Core\Usecase\User;
+
 use App\Core\Controller\UserController;
+use Exception;
 
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 

@@ -1,5 +1,5 @@
 <div id="container-subscription"
-  class=" flex flex-col md:w-1/2
+  class=" flex flex-col md:w-1/3
   w-full items-center p-4"
 >
   <p class="text-2xl font-bold mb-4">

@@ -28,6 +28,7 @@ const handleSubmit = async (event) => {
 const toggleFormDelete = () => {
   const form = document.querySelector("#form-delete-user");
   form.classList.toggle("invisible");
+  form.classList.toggle("z-50");
 };
 
 document

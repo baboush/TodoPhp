@@ -17,6 +17,7 @@ const animationMainTodoOut = () => {
   const el = document.querySelector("#main-content");
   const logout = document.querySelector("#logout");
 
+  if (!logout) return;
   logout.addEventListener("click", (e) => {
     const logout = user.logout();
     if (!!logout) {

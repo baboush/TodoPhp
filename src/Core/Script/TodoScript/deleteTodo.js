@@ -33,7 +33,9 @@ export const deleteTodo = () => {
 export const cancelDeleteTodo = () => {
   const el = document.querySelector("#cancel-delete-todo");
   el.addEventListener("click", () => {
-    const popup = document.querySelector("#form-delete-todo");
-    popup.classList.toggle("invisible", "z-50");
+    const popup = document.querySelector("#container-delete-todo");
+    if (!popup.classList.contains("invisible")) {
+      popup.classList.toggle("invisible");
+    }
   });
 };

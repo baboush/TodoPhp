@@ -43,12 +43,12 @@ const itemTodoAdd = (todo) => {
   return item;
 };
 
-const addTodo = async (todo) => {
+const addTodo = async (todoItem) => {
   const todo = new Todo();
   const todoList = await todo.findAllTodos();
 
   const el = document.querySelector("#list-todo");
-  const newTodo = itemTodoAdd(todo);
+  const newTodo = itemTodoAdd(todoItem);
   if (todoList.length > 5) {
     el.removeChild(el.lastChild);
     el.prepend(newTodo);
@@ -61,6 +61,8 @@ const addTodo = async (todo) => {
 const showForm = () => {
   const form = document.querySelector("#container-create-todo");
   form.classList.toggle("invisible");
+  form.classList.toggle("opacity-1");
+  form.classList.toggle("z-50");
   anime({
     targets: form,
     keyframes: [

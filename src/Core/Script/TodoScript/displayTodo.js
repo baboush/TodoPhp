@@ -20,15 +20,18 @@ const titleList = (title) => {
 
 const handleDefaultList = async () => {
   const todoList = await todo.findAllTodos();
+  if (todoList.length > 5) {
+    todoList.length = 5;
+  }
+  titleList(`Vos ${todoList.length} dernières tâches`);
   todoList.length = 5;
-  titleList("Vos 5 dernières tâches");
   build.bulidTodoList(todoList);
   return true;
 };
 
 const handleAll = async () => {
   const todoList = await todo.findAllTodos();
-  titleList("Toutes vos tâches");
+  titleList(`Vos ${todoList.length} tâches`);
   build.bulidTodoList(todoList);
   return true;
 };
@@ -36,7 +39,7 @@ const handleAll = async () => {
 const handlePendingList = async () => {
   const todoList = await todo.findAllTodos();
   const pendingList = todoList.filter((todo) => !todo.state);
-  titleList("Vos tâches en attente");
+  titleList(`Vos ${pendingList.length} tâches en attente`);
   build.bulidTodoList(pendingList);
   return true;
 };
@@ -44,7 +47,7 @@ const handlePendingList = async () => {
 const handleCompletedList = async () => {
   const todoList = await todo.findAllTodos();
   const completedList = todoList.filter((todo) => todo.state);
-  titleList("Vos tâches terminées");
+  titleList(`Vos ${completedList.length} tâches terminées`);
   build.bulidTodoList(completedList);
   return true;
 };

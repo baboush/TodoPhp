@@ -72,11 +72,15 @@ class UserController
     public function deleteUser(?int $id)
     {
         $sql = "DELETE FROM user WHERE id = :id";
+        $sqlTodo = "DELETE FROM todo WHERE user_id = :id";
         $bd = Bd::getInstance();
         $conn = $bd->connectionDb();
         $stmt = $conn->prepare($sql);
+        $stmtTodo = $conn->prepare($sqlTodo);
         $stmt->bindParam(':id', $id);
+        $stmtTodo->bindParam(':id', $id);
         try {
+            $stmtTodo->execute();
             $stmt->execute();
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());

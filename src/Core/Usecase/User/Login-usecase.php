@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 
-use App\Models\User;
 use App\Core\Controller\UserController;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
         $controller = new UserController();
         $user = $controller->login($login);
+
         if ($user && password_verify($password, $user->getPassword())) {
             session_start();
             $_SESSION['userId'] = $user->getId();

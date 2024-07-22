@@ -1,5 +1,4 @@
 export const itemTodoStyle = (el) => {
-  console.info("itemTodoStyle", el);
   el.classList.add(
     "flex",
     "flex-col",
@@ -75,7 +74,7 @@ export const infoTodoStyle = (el) => {
     "font-normal",
     "w-full",
     "md:p-4",
-    "block",
+    "break-all",
     "hidden",
     "opacity-0",
     "scale-y-0",

@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode(['success' => true, 'message' => 'Le profil a bien été mis à jour']);
             exit();
         } else {
-            echo json_encode(['success' => false, 'message' => "L'utiisateur n'existe pas"]);
+            echo json_encode(['success' => false, 'message' => "L'utitisateur n'existe pas"]);
         }
     }
 }

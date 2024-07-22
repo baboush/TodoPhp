@@ -13,22 +13,16 @@ $password = $user->getPassword();
 $id = $user->getId();
 ?>
 
-<button id="toggle-update-user"
-  class="bg-yellow-700 hover:bg-yellow-500
-  text-white font-bold p-4 w-full
-  rounded focus:shadow-outline"
->
-  Mettre à jour son profil
-</button>
 <div id="container-update" 
-  class="flex flex-row shadow-2xl justify-between
-  items-center w-full md:w-1/2 p-2 absolute
-  md:left-1/2 md:-translate-x-1/2
-  md:min-h-96 md:max-h-[70vh] md:top-[18vh] bg-white
-  h-screen invisible opacity-0"
+  class="flex flex-row shadow-2xl
+  items-center w-full p-2 fixed
+  absolute top-0 left-0 bg-white 
+  md:left-[50%] md:top-[50%]
+  md:transform md:translate-x-[-50%] md:translate-y-[-50%]
+  md:w-1/2 opacity-0 hidden"
 >
-  <div class="relative m-0 w-full h-full">
-    <form class="w-full h-full md:text-2xl p-12 flex 
+  <div class="relative m-0 h-full">
+    <form class=" h-full md:text-2xl p-12 flex 
       flex-col bg-white items-center
       justify-between"
       id="form-update-user"
