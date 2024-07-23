@@ -15,13 +15,13 @@ require_once __DIR__ . '/../../../../vendor/autoload.php';
 use App\Models\Todo;
 use App\Core\Controller\TodoController;
 use Exception;
+use Safe\DateTime;
 
 session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Content-Type: application/json');
-    $checkValueEmpty = $_POST['title'] !== '' || $_POST['message'] !== ''  || $_POST['idTodoUpdate'] !== '';
 
-    if (!$checkValueEmpty || $_POST['title'] == null) {
+    if ($_POST['title'] == null && $_POST['message'] == null) {
         echo json_encode(["success" => false, "message" => 'Les champs sont requis']);
         exit();
     }
@@ -31,12 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
     $dateFinish = !empty($_POST['dateFinish']) ? new DateTime(date('Y-m-d', strtotime($_POST['dateFinish']))) : null;
 
-    if (strlen($title) < 10 || strlen($title) > 40) {
-        echo json_encode(["success" => false, "message" => 'Le titre doit être compris entre 10 et 40 caractères.' . strlen($title)]);
+    if (strlen($title) < 10 || strlen($title) > 40 && !empty($title)) {
+        echo json_encode(["success" => false, "message" => 'Le titre doit être compris entre 10 et 40 caractères.']);
         exit();
     }
 
-    if (strlen($message) < 50 || strlen($message) > 400) {
+    if ((strlen($message) < 50 || strlen($message) > 400) && !empty($message)) {
         echo json_encode(["success" => false, "message" => 'Le message doit être compris entre 50 et 400 caractères.']);
         exit();
     }
@@ -44,9 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $controller = new TodoController();
     $todo = new Todo();
 
-    $todo->setTitle($title)
-        ->setMessage($message)
-        ->setDateFinish($dateFinish);
+    if (!empty($title)) {
+        $todo->setTitle($title);
+    }
+
+    if (!empty($message)) {
+        $todo->setMessage($message);
+    }
+
+    $todo->setDateFinish($dateFinish);
 
     try {
         $controller->updateTodo($todo, $id);

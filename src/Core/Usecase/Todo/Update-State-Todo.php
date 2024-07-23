@@ -1,3 +1,4 @@
+<?php
 /**
  * This script handles the updating of the state of a 'Todo' item.
  *
@@ -6,7 +7,6 @@
  * If the update is successful, it sends a JSON response with a success message and the new state.
  * If there is an error, it sends a JSON response with an error message.
  */
-<?php
 
 namespace App\Core\Usecase\Todo;
 

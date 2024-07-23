@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        if (!empty($password) && strlen($password) < 10) {
+        if (!empty($password) && strlen($password) < 10 && !empty($password)) {
             echo json_encode(['success' => false, 'message' => 'Le mot de passe doit contenir au moins 10 caractères']);
             exit();
         }

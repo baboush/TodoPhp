@@ -38,7 +38,7 @@ $id = $user->getId();
         <input
           type="text" name="login" 
           id="input-update-login"
-          value="<?php echo $login;?>"
+          value="<?php echo htmlspecialchars($login);?>"
           class="shadow appearance-none border
           rounded w-full py-2 px-3 text-gray-700
           leading-tight focus:outline-none
@@ -77,7 +77,7 @@ $id = $user->getId();
       </div>
       <input type="hidden" 
         name="id" 
-        value="<?php echo $id;?>"
+        value="<?php echo htmlspecialchars($id);?>"
       >
       <button type="submit" 
         id="update-user"

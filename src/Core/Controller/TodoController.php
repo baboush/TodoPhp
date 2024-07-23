@@ -178,12 +178,22 @@ class TodoController
         $conn = $bd->connectionDb();
         $sql = "UPDATE todo SET ";
         $params = array();
-        $sql .= "title = :title, ";
-        $params[':title'] = $todo->getTitle();
-        $sql .= "message = :message, ";
-        $params[':message'] = $todo->getMessage();
-        $sql .= "dateFinish = :dateFinish, ";
-        $params[':dateFinish'] =  $todo->getDateFinish();
+
+        if ($todo->getTitle() !== null && $todo->getTitle() !== '') {
+            $sql .= "title = :title, ";
+            $params[':title'] = $todo->getTitle();
+        }
+
+        if ($todo->getMessage() !== null && $todo->getMessage() !== '') {
+            $sql .= "message = :message, ";
+            $params[':message'] = $todo->getMessage();
+        }
+
+
+        if ($todo->getDateFinish() !== null && $todo->getDateFinish() !== '') {
+            $sql .= "dateFinish = :dateFinish, ";
+            $params[':dateFinish'] =  $todo->getDateFinish();
+        }
 
         $sql = rtrim($sql, ', ');
         $sql .= " WHERE id = :id";

@@ -30,13 +30,13 @@ namespace App\Core\Layout;
         </label>
         <input
           type="text" name="title"
-          id="input-todo-title"
+          id="input-todo-title-update"
           class="shadow appearance-none border
           rounded w-full py-2 px-3 text-gray-700
           leading-tight focus:outline-none
           focus:shadow-outline"
         >
-        <span id="hint-todo-title"
+        <span id="hint-todo-title-update"
           class="inline-flex text-red-500
           md:text-xs italic invisible"
         >
@@ -52,14 +52,14 @@ namespace App\Core\Layout;
         </label>
         <textarea
           name="message"
-          id="input-todo-message"
+          id="input-todo-message-update"
           class="shadow appearance-none border
           border-red rounded w-full
           py-2 px-3 text-gray-700 mb-3
           leading-tight focus:outline-none
           focus:shadow-outline"
         ></textarea>
-        <span id="hint-todo-message"
+        <span id="hint-todo-message-update"
           class="inline-flex text-red-500
           text-xs italic invisible"
         >
@@ -72,7 +72,7 @@ namespace App\Core\Layout;
         md:text-xl font-bold mb-2">Date</label>
         <input type="date"
           name="dateFinish"
-          id="input-date"
+          id="input-date-update"
           class="shadow appearance-none border
           border-red rounded w-full
           py-2 px-3 text-gray-700

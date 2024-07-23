@@ -4,6 +4,7 @@ import {
   errorSnackbar,
   openSnackbar,
 } from "../../../Core/Script/Utils/snackBar.js";
+import { isNotValid, isValid } from "../Utils/checkInput.js";
 import { bulidTodoList } from "../../../Core/Script/TodoScript/buildTodoList.js";
 
 /**
@@ -77,3 +78,19 @@ export const updateTodo = () => {
   const el = document.querySelector("#form-update-todo");
   el.addEventListener("submit", handleUpdateTodo);
 };
+
+document
+  .querySelector("#input-todo-title-update")
+  .addEventListener("input", (e) => {
+    if (e.target.value.length < 10 || e.target.value.length > 40)
+      isNotValid(e.target, document.querySelector("#hint-todo-title-update"));
+    else isValid(e.target, document.querySelector("#hint-todo-title-update"));
+  });
+
+document
+  .querySelector("#input-todo-message-update")
+  .addEventListener("input", (e) => {
+    if (e.target.value.length < 50 || e.target.value.length > 400)
+      isNotValid(e.target, document.querySelector("#hint-todo-message-update"));
+    else isValid(e.target, document.querySelector("#hint-todo-message-update"));
+  });

@@ -19,7 +19,7 @@ $sessionUser = intval($_SESSION['userId']);
   <p class="md:text-2xl p-4 font-bold text-center">Confirmer la suppression</p>
   <div class="flex flex-row gap-10 flex-nowrap items-center h-full w-full justify-between">
     <form class="w-full"  action="../../Core/Usecase/User/Delete-account-usecase.php" method="post">
-      <input type="hidden" name="id" value="<?php echo $sessionUser?>">
+      <input type="hidden" name="id" value="<?php echo htmlspecialchars($sessionUser)?>">
       <button type="submit" id="delete-user"  class="w-full m-auto bg-white shadow-2xl rounded-md ">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-32 m-auto text-red-600">
           <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />

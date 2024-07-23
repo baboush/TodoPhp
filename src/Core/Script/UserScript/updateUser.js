@@ -73,7 +73,10 @@ document.querySelector("#input-update-login").addEventListener("input", (e) => {
 document
   .querySelector("#input-update-password")
   .addEventListener("input", (e) => {
-    if (e.target.value.length < 3 || e.target.value.length > 40)
+    const regex = new RegExp(
+      "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{10,}$",
+    );
+    if (e.target.value.length < 10 || !regex.test(e.target.value))
       isNotValid(e.target, document.querySelector("#hint-update-password"));
     else isValid(e.target, document.querySelector("#hint-update-password"));
   });
