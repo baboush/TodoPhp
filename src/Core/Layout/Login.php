@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file represents the login form that allows users to authenticate.
+ * It contains a form with fields for the user's login and password.
+ *
+ */
 
 namespace App\Core\Layout;
 

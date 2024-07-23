@@ -1,4 +1,13 @@
 <?php
+/**
+ * This script handles the login of a user.
+ *
+ * It checks if the request method is POST, retrieves the login and password from the POST parameters,
+ * sanitizes the data, creates a new 'UserController' object, and sends a request to the server to authenticate the user.
+ * If the authentication is successful, it starts a new session, sets the user ID session variable,
+ * and sends a JSON response with a success message. If the authentication fails,
+ * it sends a JSON response with an error message.
+ */
 
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 

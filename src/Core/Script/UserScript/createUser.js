@@ -1,12 +1,19 @@
-import {
-  successSnackbar,
-  errorSnackbar,
-  openSnackbar,
-} from "../Utils/snackBar.js";
+import { successSnackbar, errorSnackbar } from "../Utils/snackBar.js";
 import { isNotValid, isValid } from "../Utils/checkInput.js";
 
 const container = document.querySelector("#container-subscription");
 
+/**
+ * Handles the submission of the user creation form.
+ *
+ * This function prevents the default form submission, creates a new FormData object from the form,
+ * sends a request to the server to create the user, and handles the response. If the creation is successful,
+ * it hides the user creation form, displays the login form, and shows a success message. If there is an error,
+ * it shows an error message.
+ *
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>} A promise that resolves when the operation is complete.
+ */
 const handleSubmit = async (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
@@ -30,6 +37,11 @@ document
   .querySelector("#form-create-user")
   .addEventListener("submit", handleSubmit);
 
+/**
+ * Hides the user creation form.
+ *
+ * This function animates the user creation form and then hides it.
+ */
 const hiddenForm = () => {
   anime({
     targets: container,
@@ -42,6 +54,11 @@ const hiddenForm = () => {
   });
 };
 
+/**
+ * Displays the login form.
+ *
+ * This function animates the login form and then shows it.
+ */
 const displayLoginForm = () => {
   const loginForm = document.querySelector("#container-conn");
   anime({

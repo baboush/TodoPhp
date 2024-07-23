@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file represents the list of actions that can be performed on the application.
+ * It contains links to create, update, and delete a user, as well as to create a todo.
+ *
+ */
 
 namespace App\Core\Layout;
 

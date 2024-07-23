@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * This script handles the creation of a user.
+ *
+ * It checks if the request method is POST, retrieves the login and password from the POST parameters,
+ * sanitizes and validates the data, hashes the password, creates a new 'User' object,
+ * and sends a request to the server to create the user. If the creation is successful,
+ * it sends a JSON response with a success message and the login of the new user.
+ * If there is an error, it sends a JSON response with an error message.
+ */
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 
 use App\Models\User;

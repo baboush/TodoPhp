@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file represents the list of todos that can be performed on the application.
+ * It contains a list of todos, and links to delete and update a todo.
+ *
+ */
 
 namespace App\Core\Layout;
 

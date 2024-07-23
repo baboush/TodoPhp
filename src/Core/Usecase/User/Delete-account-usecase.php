@@ -1,4 +1,13 @@
 <?php
+/**
+ * This script handles the deletion of a user account.
+ *
+ * It checks if the request method is POST, retrieves the user ID from the POST parameters,
+ * sanitizes and validates the data, creates a new 'UserController' object, and sends a request to the server to delete the user.
+ * If the deletion is successful, it destroys the session, unsets the user ID session variable,
+ * and sends a JSON response with a success message and the ID of the deleted user.
+ * If there is an error, it sends a JSON response with an error message.
+ */
 
 namespace App\Core\Usecase\User;
 

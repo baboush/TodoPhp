@@ -1,4 +1,12 @@
 <?php
+/**
+ * This script handles the updating of a 'Todo' item.
+ *
+ * It checks if the request method is POST, retrieves the user ID from the session and the 'Todo' ID, title, message, and finish date from the POST parameters,
+ * sanitizes and validates the data, creates a new 'TodoController' object, and sends a request to the server to update the 'Todo'.
+ * If the update is successful, it sends a JSON response with a success message.
+ * If there is an error, it sends a JSON response with an error message.
+ */
 
 namespace App\Core\Usecase\Todo;
 

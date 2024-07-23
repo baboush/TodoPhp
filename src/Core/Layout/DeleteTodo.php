@@ -1,4 +1,8 @@
 <?php
+/**
+ * DeleteTodo.php
+ * Script to delete a todo
+ */
 
 namespace App\Core\Layout;
 

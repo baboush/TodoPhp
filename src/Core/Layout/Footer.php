@@ -1,7 +1,0 @@
-    <footer class="flex w-full min-h-[10vh] flex-row flex-wrap items-center justify-between bg-gray-200 p-4 gap-10">
-      <p class="text-center w-full">© 2024 - Tous droits</p>
-      <a class="text-center w-full">Mentions lègales</a>
-    </footer>
-
-  </body>
-</html>

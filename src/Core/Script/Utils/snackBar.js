@@ -1,3 +1,5 @@
+// annimation and style snackbar
+
 const snackbar = document.querySelector("#snackbar");
 
 export const successSnackbar = (message) => {

@@ -1,4 +1,12 @@
 <?php
+/**
+ * This script handles the creation of a 'Todo' item.
+ *
+ * It checks if the request method is POST, sanitizes the input data, validates the data,
+ * creates a new 'Todo' object, and sends a request to the server to create the 'Todo'.
+ * If the creation is successful, it sends a JSON response with the new 'Todo' item.
+ * If there is an error, it sends a JSON response with an error message.
+ */
 
 namespace App\Core\Usecase\Todo;
 

@@ -1,4 +1,8 @@
 <?php
+/**
+* CreateTodo.php
+* Scricpt executed when the user wants to create a new todo.
+  */
 
 namespace App\Core\Layout;
 

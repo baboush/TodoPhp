@@ -1,4 +1,12 @@
 <?php
+/**
+ * This script handles the deletion of a 'Todo' item.
+ *
+ * It checks if the request method is POST, sanitizes the input data, validates the data,
+ * creates a new 'TodoController' object, and sends a request to the server to delete the 'Todo'.
+ * If the deletion is successful, it sends a JSON response with a success message.
+ * If there is an error, it sends a JSON response with an error message.
+ */
 
 namespace App\Core\Usecase\Todo;
 

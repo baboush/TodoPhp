@@ -8,8 +8,21 @@ use Exception;
 use PDO;
 use PDOException;
 
+/**
+ * Class TodoController
+ *
+ * This class is responsible for handling operations related to 'Todo' entities.
+ * It provides methods to create, read, update, and delete 'Todo' entities.
+ */
 class TodoController
 {
+    /**
+     * Creates a new 'Todo' entity.
+     *
+     * @param Todo|null $todo The 'Todo' entity to create.
+     * @throws Exception If the user associated with the 'Todo' does not exist or if there is a database error.
+     * @return string A JSON string representing the created 'Todo' entity.
+     */
     public function createTodo(?Todo $todo)
     {
 
@@ -57,54 +70,91 @@ class TodoController
         }
     }
 
+    /**
+     * Retrieves all 'Todo' entities associated with a specific user.
+     *
+     * @param int $userId The ID of the user.
+     * @throws Exception If there is a database error.
+     * @return array An array of 'Todo' entities.
+     */
     public function findAllTodos(int $userId): array
     {
         $bd = Bd::getInstance();
         $conn = $bd->connectionDb();
         $sql = "SELECT * FROM todo WHERE user_id = :userId ORDER By createAt DESC";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':userId', $userId);
         try {
-            $stmt->execute(['userId' => $userId]);
+            $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }
     }
 
+    /**
+     * Retrieves a specific 'Todo' entity associated with a specific user.
+     *
+     * @param int $id The ID of the 'Todo' entity.
+     * @param int $userId The ID of the user.
+     * @throws Exception If there is a database error.
+     * @return mixed The 'Todo' entity, or false if not found.
+     */
     public function findOne(int $id, int $userId)
     {
         $bd = Bd::getInstance();
         $conn = $bd->connectionDb();
         $sql = "SELECT * FROM todo WHERE id = :id AND user_id = :userId";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam('id', $id);
+        $stmt->bindParam('userId', $userId);
         try {
-            $stmt->execute(['id' => $id, 'userId' => $userId]);
+            $stmt->execute();
             return $stmt->fetch();
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }
     }
 
+    /**
+     * Updates the state of a specific 'Todo' entity.
+     *
+     * @param int $id The ID of the 'Todo' entity.
+     * @param int $state The new state of the 'Todo' entity.
+     * @throws Exception If there is a database error.
+     * @return string A JSON string indicating the success of the operation.
+     */
     public function updateStateTodo(int $id, int $state)
     {
         $bd = Bd::getInstance();
         $conn = $bd->connectionDb();
         $sql = "UPDATE todo SET state = :state WHERE id = :id";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':state', $state);
         try {
-            $stmt->execute(['id' => $id, 'state' => $state]);
+            $stmt->execute();
             return json_encode(["success" => true, "message" => "Todo Mise à jour"]);
         } catch (PDOException $e) {
             throw new Exception($e->getMessage());
         }
     }
 
+    /**
+    * Deletes a specific 'Todo' entity.
+    *
+    * @param int $id The ID of the 'Todo' entity.
+    * @throws Exception If there is a database error.
+    * @return string A JSON string indicating the success of the operation.
+    */
     public function removeTodoById(int $id)
     {
         $bd = Bd::getInstance();
         $conn = $bd->connectionDb();
         $sql = "DELETE FROM todo WHERE id = :id";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+
 
         try {
             $stmt->execute(['id' => $id]);
@@ -114,6 +164,14 @@ class TodoController
         }
     }
 
+    /**
+    * Updates a specific 'Todo' entity.
+    *
+    * @param Todo|null $todo The new data for the 'Todo' entity.
+    * @param int $id The ID of the 'Todo' entity to update.
+    * @throws Exception If there is a database error.
+    * @return Todo|null The updated 'Todo' entity, or null if not found.
+    */
     public function updateTodo(?Todo $todo, int $id): ?Todo
     {
         $bd = Bd::getInstance();

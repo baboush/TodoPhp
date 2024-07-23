@@ -1,4 +1,8 @@
 <?php
+/**
+* DeleteAccount.php
+* Script to delete an account
+  */
 
 namespace App\Core\Layout;
 

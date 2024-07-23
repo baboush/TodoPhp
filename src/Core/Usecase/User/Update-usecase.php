@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This script handles the updating of a user.
+ *
+ * It checks if the request method is POST, retrieves the login, password, and ID from the POST parameters,
+ * sanitizes and validates the data, creates a new 'User' object, and sends a request to the server to update the user.
+ * If the update is successful, it sends a JSON response with a success message.
+ * If there is an error, it sends a JSON response with an error message.
+ */
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 
 use App\Models\User;

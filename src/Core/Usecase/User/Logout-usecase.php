@@ -1,7 +1,8 @@
 <?php
-
+/**
+* This script handles the logout of a user.
+*/
 session_start();
 session_destroy();
 unset($_SESSION['user']);
-//header('Location: ../../../index.php?logged_out=true');
 exit();

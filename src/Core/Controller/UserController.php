@@ -10,8 +10,21 @@ use Exception;
 use PDO;
 use PDOException;
 
+/**
+ * Class UserController
+ *
+ * This class is responsible for handling operations related to 'User' entities.
+ * It provides methods to create, read, update, delete, and authenticate 'User' entities.
+ */
 class UserController
 {
+    /**
+         * Creates a new 'User' entity.
+         *
+         * @param User|null $user The 'User' entity to create.
+         * @throws Exception If there is a database error.
+         * @return User|null The created 'User' entity, or null if not created.
+         */
     public function createUser(?User $user): ?User
     {
         $sql = "INSERT INTO user (login, passwd) VALUES (:login, :password)";
@@ -31,6 +44,12 @@ class UserController
         }
     }
 
+    /**
+      * Checks if a 'User' entity exists with the given login.
+      *
+      * @param string|null $login The login of the 'User' entity.
+      * @return bool True if the 'User' entity exists, false otherwise.
+      */
     public function userExists(?string $login)
     {
         $sql = "SELECT * FROM user WHERE login = :login";
@@ -46,7 +65,13 @@ class UserController
         return $user !== false;
     }
 
-
+    /**
+         * Retrieves a specific 'User' entity.
+         *
+         * @param int|null $id The ID of the 'User' entity.
+         * @throws Exception If there is a database error.
+         * @return User|null The 'User' entity, or null if not found.
+         */
     public function findOneUser(?int $id): ?User
     {
         $sql = "SELECT * FROM user WHERE id = :id";
@@ -69,6 +94,12 @@ class UserController
         }
     }
 
+    /**
+             * Deletes a specific 'User' entity and all associated 'Todo' entities.
+             *
+             * @param int|null $id The ID of the 'User' entity.
+             * @throws Exception If there is a database error.
+             */
     public function deleteUser(?int $id)
     {
         $sql = "DELETE FROM user WHERE id = :id";
@@ -87,6 +118,13 @@ class UserController
         }
     }
 
+    /**
+             * Updates a specific 'User' entity.
+             *
+             * @param User|null $user The new data for the 'User' entity.
+             * @throws Exception If there is a database error.
+             * @return User|null The updated 'User' entity, or null if not found.
+             */
     public function updateUser(?User $user): ?User
     {
         $bd = Bd::getInstance();
@@ -130,6 +168,13 @@ class UserController
         }
     }
 
+    /**
+             * Authenticates a 'User' entity.
+             *
+             * @param string|null $login The login of the 'User' entity.
+             * @throws Exception If there is a database error.
+             * @return User|null The authenticated 'User' entity, or null if authentication fails.
+             */
     public function login(?string $login): ?User
     {
 

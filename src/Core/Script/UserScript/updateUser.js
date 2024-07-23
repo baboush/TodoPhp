@@ -5,6 +5,17 @@ import {
 } from "../Utils/snackBar.js";
 import { isNotValid, isValid } from "../Utils/checkInput.js";
 
+/**
+ * Handles the submission of the user update form.
+ *
+ * This function prevents the default form submission, creates a new FormData object from the form,
+ * sends a request to the server to update the user, and handles the response. If the update is successful,
+ * it hides the user update form and shows a success message. If there is an error,
+ * it hides the user update form and shows an error message.
+ *
+ * @param {Event} event - The form submission event.
+ * @returns {Promise<void>} A promise that resolves when the operation is complete.
+ */
 const handleSubmit = async (event) => {
   event.preventDefault();
 
@@ -29,6 +40,11 @@ const handleSubmit = async (event) => {
   }
 };
 
+/**
+ * Shows the user update form.
+ *
+ * This function toggles the visibility of the user update form.
+ */
 const showForm = () => {
   const form = document.querySelector("#container-update");
   form.classList.toggle("hidden");
@@ -36,6 +52,11 @@ const showForm = () => {
   form.classList.toggle("z-50");
 };
 
+/**
+ * Hides the user update form.
+ *
+ * This function toggles the visibility of the user update form.
+ */
 const closeForm = () => {
   const form = document.querySelector("#container-update");
   form.classList.toggle("hidden");
